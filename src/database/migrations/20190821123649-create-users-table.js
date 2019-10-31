@@ -14,6 +14,9 @@ export default {
     facebookId: {
       type: Sequelize.STRING
     },
+    twitterId: {
+      type: Sequelize.STRING
+    },
     username: {
       type: Sequelize.STRING,
       allowNull: false,

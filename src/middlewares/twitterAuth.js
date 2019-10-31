@@ -2,8 +2,8 @@ import passport from 'passport';
 import { generateToken } from '../helpers/jwt';
 import { sanitizeUser } from '../helpers/sanitizeUser';
 
-export const facebookAuthenticate = passport.authenticate('facebook', { scope: ['email'] });
-export const facebookAuthCallback = (req, res, next) => passport.authenticate('facebook', async (err, user) => {
+export const twitterAuthenticate = passport.authenticate('twitter');
+export const twitterAuthCallback = (req, res, next) => passport.authenticate('twitter', async (err, user) => {
   if (!user) {
     return res.redirect('/login');
   }
