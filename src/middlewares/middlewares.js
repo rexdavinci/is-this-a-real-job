@@ -21,6 +21,7 @@ import { validateUserById } from './validateUser';
 import { googleAuthenticate, googleAuthCallback } from './googleAuth';
 import { facebookAuthenticate, facebookAuthCallback } from './facebookAuth';
 import { twitterAuthenticate, twitterAuthCallback } from './twitterAuth';
+import { auth0Authenticate, auth0AuthCallback } from './auth0';
 import { multerUploads } from './multer';
 
 export {
@@ -47,4 +48,6 @@ export {
   multerUploads,
   verifyUniqueUserEmail,
   verifyUniqueUserUsername,
+  auth0Authenticate,
+  auth0AuthCallback
 };

@@ -20,12 +20,18 @@ const keys = Keygrip([SECRET_KEY]);
 const app = express();
 const server = http.createServer(app);
 const io = socket(http);
-app.use(session({
+const sess = {
   secret: SECRET_KEY,
   resave: false,
   saveUninitialized: true,
-  cookies: { secure: true }
-}));
+  cookie: { }
+};
+
+if (app.get('env') === 'production') {
+  sess.cookie.session = true;
+}
+
+app.use(session(sess));
 
 app.use((req, res, next) => {
   // res.setHeader('Access-Control-Allow-Origin', '*'); //Don't think we need CORS here.

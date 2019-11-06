@@ -22,7 +22,9 @@ import {
   facebookAuthCallback,
   multerUploads,
   verifyUniqueUserUsername,
-  verifyUniqueUserEmail
+  verifyUniqueUserEmail,
+  auth0Authenticate,
+  auth0AuthCallback
 } from '../middlewares/middlewares';
 
 import {
@@ -151,7 +153,9 @@ export const initRoutes = app => {
     verifyUniqueUserUsername,
     signup
   );
-
+  //Auth0 Auth
+  app.get('/auth/auth0', auth0Authenticate);
+  app.get('/auth/redirect', auth0AuthCallback);
 
   // Twitter Auth
   app.get('/auth/twitter', twitterAuthenticate);

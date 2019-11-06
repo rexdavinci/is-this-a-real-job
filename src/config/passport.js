@@ -1,4 +1,5 @@
 import passport from 'passport';
+import Auth0Strategy from 'passport-auth0';
 import TwitterStrategy from 'passport-twitter';
 import GoogleStrategy from 'passport-google-oauth20';
 import FacebookStrategy from 'passport-facebook';
@@ -8,7 +9,7 @@ import { passwordHash } from '../helpers/hash';
 import {
   findSingleUser, createUser, updateOneUser
 } from '../services/userServices';
-import { twitterConfig, googleConfig, facebookConfig } from './socialAuth';
+import { twitterConfig, googleConfig, facebookConfig, auth0Config } from './socialAuth';
 
 const TwitterAuthStrategy = TwitterStrategy.Strategy;
 
@@ -157,3 +158,10 @@ passport.use(new FacebookAuthStrategy(facebookConfig,
       return done(err);
     }
   }));
+
+
+passport.use(new Auth0Strategy(auth0Config,
+  async(accessToken, refreshToken, extraParams, profile, done) => {
+    return done(null, profile)
+  }
+  ))
